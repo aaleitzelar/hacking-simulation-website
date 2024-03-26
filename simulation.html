@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<title> simulation.html </title>
+
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Security Awareness Demo</title>
+    <style>
+        body, html {
+            margin: 0;
+            padding: 0;
+            height: 100%;
+            overflow: hidden; /* Prevent scrolling */
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            background-color: #f0f0f0; /* Light background to emphasize the centered box */
+        }
+        #initialScreen {
+            transform: scale(0.8); /* Scale down to 80% of the original size */
+            text-align: center;
+            padding: 50px;
+            background-color: white; /* Background for contrast */
+            border-radius: 10px; /* Optional: Adds rounded corners for aesthetics */
+            box-shadow: 0 4px 8px rgba(0,0,0,0.1); /* Optional: Adds a subtle shadow for depth */
+            transition: transform 0.3s ease; /* Smooth transition for scaling effect */
+        }
+        #initialScreen h1 {
+            font-size: 3.2em; /* Adjusted size after scaling */
+            margin: 0.4em 0; /* Adjust spacing around the heading */
+        }
+        #initialScreen p {
+            font-size: 1.6em; /* Adjusted size after scaling */
+            margin: 0.8em 0; /* Adjust spacing around the paragraph */
+        }
+        #initialScreen button {
+            font-size: 1.2em; /* Adjusted size after scaling */
+            padding: 12px 24px; /* Adjusted button size */
+            cursor: pointer;
+            margin-top: 20px;
+        }
+        .hacked-screen {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100vw;
+            height: 100vh;
+            z-index: 1000;
+            background-color: black;
+        }
+        .hacked-screen iframe {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100vw;
+            height: 100vh;
+            border: none;
+            z-index: 1;
+        }
+        .message, .safety-tips {
+            z-index: 2; /* Above the GIF */
+            position: relative; /* Adjust for positioning within hacked-screen */
+            margin: auto; /* Center within hacked-screen */
+            text-align: center;
+            max-width: 600px; /* Max width for better readability */
+            color: white;
+            background-color: rgba(0, 0, 0, 0.7); /* Semi-transparent background */
+            padding: 20px;
+            border-radius: 10px;
+        }
+        .message {
+            font-size: 2em; /* Adjusted font size for prominence */
+            font-weight: bold; /* Bolder font weight */
+            margin-top: 20vh; /* Adjusted to not overlap with the iframe on smaller screens */
+        }
+        .safety-tips {
+            font-size: 0.96em; /* Adjusted font size for enhanced readability */
+            margin-top: 20px; /* Adjusted spacing */
+        }
+    </style>
+</head>
+<body>
+
+<div id="initialScreen">
+    <h1>Security Awareness: Understanding Risks</h1>
+    <p>Clicking suspicious buttons on unknown websites can lead to security breaches.</p>
+    <button onclick="simulateHack()">Click at Your Own Risk</button>
+</div>
+
+<div id="hackedScreen" class="hacked-screen">
+    <iframe src="https://giphy.com/embed/V4NSR1NG2p0KeJJyr5" frameborder="0" class="giphy-embed" allowFullScreen></iframe>
+    <div class="message">You've been hacked! (Just kidding, this is a simulation.)</div>
+    <div class="safety-tips">
+        <p>Follow these safety tips:</p>
+        <ul>
+            <li>Never share personal information on suspicious sites.</li>
+            <li>Always verify the URL and look for HTTPS.</li>
+            <li>Use strong, unique passwords for different sites.</li>
+            <li>Enable two-factor authentication where possible.</li>
+        </ul>
+        <button onclick="closeHack()">Close</button>
+    </div>
+</div>
+
+<script>
+function simulateHack() {
+    document.getElementById('initialScreen').style.display = 'none'; // Hide initial screen
+    document.getElementById('hackedScreen').style.display = 'block'; // Show hacked screen
+}
+
+function closeHack() {
+    document.getElementById('hackedScreen').style.display = 'none';
+    document.getElementById('initialScreen').style.display = 'flex'; // Restore the initial screen
+}
+</script>
+
+</body>
+</html>
